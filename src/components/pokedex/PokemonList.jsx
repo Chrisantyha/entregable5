@@ -4,7 +4,7 @@ import PokemonCard from './PokemonCard'
 const PokemonList = ({pokemons}) => {
     //  
   return (
-    <section>
+    <section className='grid px-4 gap-5 grid-cols-[repeat(auto-fit,_minmax(220px,_1fr))] '>
         {
             pokemons.map((pokemon)=> <PokemonCard key = {pokemon.url} pokemonUrl = {pokemon.url} />)
         }

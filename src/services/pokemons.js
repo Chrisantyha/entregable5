@@ -27,3 +27,7 @@ const formatStats = (stats)=> {
 const formatTypes = (types) =>{
     return types.map((type)=>type.type.name)
 }
+
+export const joinPokemonTypes = (types = [])=> {
+    return types.slice(0,2).join(" / ")
+}
