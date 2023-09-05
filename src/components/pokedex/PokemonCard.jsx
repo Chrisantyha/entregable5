@@ -8,12 +8,6 @@ const PokemonCard = ({pokemonUrl}) => {
     const [pokemonInfo, setPokemonInfo] = useState(null)
     //console.log(pokemonInfo)
 
-  
-
-    
-
-
-
     useEffect(() => {
         getPokemonByUrl(pokemonUrl)
         .then((data)=>setPokemonInfo(data))
