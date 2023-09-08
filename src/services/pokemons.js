@@ -17,7 +17,7 @@ export const getPokemonById = async (pokemonId)=>{
         image: data.sprites.versions["generation-v"]["black-white"].animated.front_default,
         weight: data.weight,
         height: data.height,
-        abilities: data.abilities,
+        abilities: data.abilities,   
         moves: data.moves,
     }
     // console.log(pokemon)
@@ -28,11 +28,33 @@ export const getPokemonById = async (pokemonId)=>{
 }
 
 export const getPokemonByType = async (pokemonType) =>{
-    const url = `https://pokeapi.co/api/v2/type/${pokemonType}`
+    const url = `https://pokeapi.co/api/v2/type/${pokemonType}/`
     const { data } = await axios.get(url);
 
     const formatPokemon = data.pokemon.map(({pokemon})=> pokemon)
     return formatPokemon;
+}
+
+
+export const getPokemonById1 = async (pokemonId) => {
+    const url =`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`
+    const {data} = await axios.get(url)
+    const pokemon= {
+        id: data.id,
+        name: data.name,
+        types: formatTypes(data.types),
+        stats: formatStats(data.stats),
+        image: data.sprites.versions["generation-v"]["black-white"].animated.front_default,
+            weight: data.weight,
+            height: data.height,
+            abilities: data.abilities,
+            moves: data.moves
+
+    }
+    // console.log(pokemon)
+    return pokemon
+
+
 }
 
 export const getPokemonByUrl = async (pokemonUrl)=>{
@@ -47,6 +69,8 @@ export const getPokemonByUrl = async (pokemonUrl)=>{
     // console.log(pokemon)
     return pokemon
 }
+
+
 
 const formatStats = (stats)=> {
     return stats.map((stat)=> ({name:stat.stat.name, value: stat.base_stat}))

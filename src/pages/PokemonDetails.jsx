@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getPokemonById } from "../services/pokemons"
+import { getPokemonById, getPokemonById1 } from "../services/pokemons"
+import StatBarList from "../components/pokemonDetail/StatBarList"
 
 const PokemonDetails = () => {
   const {pokemonId} = useParams()
@@ -8,7 +9,9 @@ const PokemonDetails = () => {
   const [pokemonData, setPokemonData] = useState(null)
 
   useEffect(() => {
-    getPokemonById(pokemonId).then((data)=>setPokemonData(data)).catch((err)=>console.log(err))
+    getPokemonById1(pokemonId)
+    .then((data)=>setPokemonData(data))
+    .catch((err)=>console.log(err))
     
   
    
@@ -20,8 +23,30 @@ const PokemonDetails = () => {
 
   useParams()
   return (
-    <main>
-      <h1>ughduh</h1>
+    <main className="flex justify-center items-center">
+      <article className=" w-[min(100%,400px)]">
+
+        <header>
+
+        <div>
+          <img src={pokemonData?.image} alt="" />
+
+        </div>
+        </header>
+
+        <section>
+
+          <span>#{pokemonData?.id}</span>
+          <StatBarList stats = {pokemonData?.stats} />
+
+        </section>
+
+
+
+
+
+
+      </article>
 
 
     </main>
