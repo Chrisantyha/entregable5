@@ -24,7 +24,7 @@ const PokemonCard = ({pokemonUrl}) => {
             </div>
         </header>
 
-        <section className='bg-'>
+        <section >
             <h3 className='text-lg font-bold '>{pokemonInfo?.name}</h3>
             <h4>{joinPokemonTypes(pokemonInfo?.types )}</h4>
             <h5 className='text-sm mb-2'>Types</h5>
